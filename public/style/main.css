@@ -1,0 +1,60 @@
+
+.container{
+  max-width:940px;
+  width:70%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+header .cart-receiver{
+  text-align:right;
+}
+
+header{
+  text-align:center;
+  border-bottom: 3px solid black;
+}
+
+footer{
+  border-top: 3px solid black;
+  text-align:center;
+  padding:1em;
+  margin-top:2em;
+}
+
+.cart-table img{
+  max-width: 50px;
+  max-height:50px; 
+}
+
+
+.product img{
+  max-width: 100px;
+  max-height:100px;
+  float:left;
+  padding:15px;
+}
+.product button{
+  float:right;
+  font-size:1.5em;
+}
+.product{
+  clear:both;
+  margin-top:30px;
+}
+.basket .purchase{
+  font-size:1.5em;
+}
+.basket table th{
+  text-align:left;
+}
+.basket table td.name{
+  width:50%;
+}
+.basket table td.price{
+  width:20%;
+}
+.basket table td.quantity{
+  width:20%;
+}
+  

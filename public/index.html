@@ -1,16 +1,46 @@
 <html>
   <head>
     <title>Fine Whiskeys</title>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/public/scripts/shop.js"></script>
+    <link rel="stylesheet" href="/public/style/main.css" />
   </head>
   <body>
+    <div class="container">
     <header>
-      <h1>Fine Whiskey Company Ltd</h1>
-      <div>
-
-      </div>
+      <h1>The Mighty Fine Whiskey Company Ltd</h1>
+      <div class="cart-receiver"></div>
     </header>
-
-</body>
+    <section class="catalogue-receiver">
+    
+    </section>
+    <footer>
+    &copy; 2017 The Mighty Fine Whiskey Company ltd.
+    </footer>
+    </div>
+    
+    <script id="catalogue-template" type="text/x-handlebars-template">
+      {{#each this}}
+        <div class="product">
+          <h2 class="name">{{name}}</h2>
+          <img src="{{image}}" alt="Photo of {{name}}"></img>
+          <button onclick="add_to_cart('{{id}}')">Add to cart</button>
+          <p class="producer">{{producer}}</p>
+          <p class="description">{{description}}</p>
+          <p class="price">£{{price}}</p>
+        </div>
+      {{/each}}
+    </script> 
+    
+    <script id="cart-template" type="text/x-handlebars-template">
+      <p>{{#if count}} 
+        <a href="/public/checkout.html">{{count}} items in cart (£{{total}})</a> 
+      {{else}}
+        Cart is empty
+      {{/if}}
+      </p>
+    </script>
+  </body>
 </html>

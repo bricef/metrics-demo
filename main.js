@@ -2,6 +2,7 @@ const path = require('path')
 
 const express = require('express')
 const bodyParser = require('body-parser')
+const _ = require('lodash')
 
 const catalogue = require("./catalogue.json")
 
@@ -17,10 +18,17 @@ app.set('json spaces', 2);
 app.use('/public', express.static(public_path))
 
 app.post("/api/purchase", function(req, res){
-  var total = req.body.cart.reduce((a,line)=>{
-    return a + (line.quantity * catalogue[line.product.id])
-  }, 0)
-
+  var order = _.reduce(req.body, (order,item,line)=>{
+    console.log(catalogue[item.id].price, item.count);
+    order.count += item.count;
+    order.total += (item.count * catalogue[item.id].price);
+    return order;
+  }, {
+    status: "OK",
+    count: 0,
+    total: 0,
+  })
+  res.json(order)
 })
 
 app.get("/api/catalogue", function(req, res){
