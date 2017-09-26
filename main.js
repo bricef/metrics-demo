@@ -3,6 +3,7 @@ const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
 const _ = require('lodash')
+const epimetheus = require('epimetheus')
 
 const catalogue = require("./catalogue.json")
 
@@ -13,6 +14,9 @@ var public_path = path.join(__dirname, 'public');
 // Parse incoming json
 app.use(bodyParser.json())
 app.set('json spaces', 2);
+
+// Instrument server with metrics endpoint
+epimetheus.instrument(app)
 
 // Serve static files from public dir
 app.use('/public', express.static(public_path))
