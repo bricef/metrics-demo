@@ -4,6 +4,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const _ = require('lodash')
 const epimetheus = require('epimetheus')
+const prometheus = require('prom-client')
 
 const catalogue = require("./catalogue.json")
 
@@ -18,6 +19,9 @@ app.set('json spaces', 2);
 // Instrument server with metrics endpoint
 epimetheus.instrument(app)
 
+// Create custom counter for sales
+const sales_counter = new prometheus.Counter({name:'sales', help:'Total sales in GBP'})
+
 // Serve static files from public dir
 app.use('/public', express.static(public_path))
 
@@ -26,6 +30,7 @@ app.post("/api/purchase", function(req, res){
     order.count += item.count;
     order.total += (item.count * catalogue[item.id].price);
     console.log("Order made: ", order);
+    sales_counter.inc(order.total)
     return order;
   }, {
     status: "OK",
