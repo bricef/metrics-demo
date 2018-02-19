@@ -4,8 +4,8 @@
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="/public/scripts/shop.js"></script>
-    <link rel="stylesheet" href="/public/style/main.css" />
+    <script src="/app/public/scripts/shop.js"></script>
+    <link rel="stylesheet" href="/app/public/style/main.css" />
   </head>
   <body>
     <div class="container">
@@ -36,7 +36,7 @@
     
     <script id="cart-template" type="text/x-handlebars-template">
       <p>{{#if count}} 
-        <a href="/public/checkout.html">{{count}} items in cart (£{{total}})</a> 
+        <a href="/app/public/checkout.html">{{count}} items in cart (£{{total}})</a> 
       {{else}}
         Cart is empty
       {{/if}}
