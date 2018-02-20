@@ -79,7 +79,7 @@ $(function(){
 
   make_purchase = function(){
     $.ajax({
-      url: "/app/api/purchase",
+      url: "/mighty-fine/api/purchase",
       type: "POST",
       contentType: "application/json; charset=utf-8",
       dataType: "json",
@@ -98,7 +98,7 @@ $(function(){
     cart.total = 0;
   }
 
-  $.get('/app/api/catalogue', 
+  $.get('/mighty-fine/api/catalogue', 
     function(data){
       Object.assign(catalogue, data);
     },'json');

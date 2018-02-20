@@ -12,7 +12,7 @@ items:
       rules:
       - http:
           paths:
-          - path: /app
+          - path: /mighty-fine
             backend:
               serviceName: mighty-fine-fe
               servicePort: http

@@ -3,7 +3,7 @@
     "id": "2e533790-1a1c-4798-acce-3c6ffa8164f6",
     "name": "Hibiki 21 Years",
     "producer": "Suntory",
-    "image": "/app/public/img/suntory-hibiki-21.jpg",
+    "image": "/mighty-fine/public/img/suntory-hibiki-21.jpg",
     "description": "A big, bold and beautiful nose of oily rum-like notes. Lightly raisinated fruit and spice drift above some lusciously creamy oak. Lovely maturity to the aromas, and very much like an old grain whisky. Superb depth with a refreshing citrus twist. The palate is quite tannic to begin with as the oak really grips. There is a depth of lightly oiled dried fruit orange peel, strawberry jam and baked apple. Smooth, subtle and fairly short finish.",
     "price": 499.0
   },
@@ -11,7 +11,7 @@
     "id":"d44581b2-f8d5-4c6f-b2ce-5d3e41fba64b",
     "name": "Port Cask Finish",
     "producer": "Breckenridge",
-    "image": "/app/public/img/breckenridge-port-cask-finish.jpg",
+    "image": "/mighty-fine/public/img/breckenridge-port-cask-finish.jpg",
     "description": "Vanilla, sugar and oak on the nose with hints of fruit. Beautiful palate, broad, sweet and fruity. Sweet and balanced finish.",
     "price": 65.0
   },
@@ -19,7 +19,7 @@
     "id": "fab86ee4-35ce-4225-8e66-6e623c169634",
     "name": "Selection Notes Fumées",
     "producer": "Black Mountain",
-    "image": "/app/public/img/black-mountain-notes-fumees.jpg",
+    "image": "/mighty-fine/public/img/black-mountain-notes-fumees.jpg",
     "description": "Feminine nose and surprising peaty character on the palate. Well balanced and easy to drink.",
     "price": 55.0 
   },
@@ -27,7 +27,7 @@
     "id": "4ad3815d-da66-46b3-96d2-f8fe95761f0d",
     "name": "Black Barrel",
     "producer": "Jameson",
-    "image": "/app/public/img/jameson-black-label.jpg",
+    "image": "/mighty-fine/public/img/jameson-black-label.jpg",
     "description": "Pale gold with some red tinges. Nice complexity, touches of marzipan, roasted nuts, dried fruits, red apples, fruit and nut chocolate. Sweet and fruity. Well balanced. Great complexity for a blend. Smooth and easy to drink.",
     "price": 49.95
   }

@@ -23,9 +23,9 @@ epimetheus.instrument(app)
 const sales_counter = new prometheus.Counter({name:'sales', help:'Total sales in GBP'})
 
 // Serve static files from public dir
-app.use('/app/public', express.static(public_path))
+app.use('/mighty-fine/public', express.static(public_path))
 
-app.post("/app/api/purchase", function(req, res){
+app.post("/mighty-fine/api/purchase", function(req, res){
   var order = _.reduce(req.body, (order,item,line)=>{
     order.count += item.count;
     order.total += (item.count * catalogue[item.id].price);
@@ -40,7 +40,7 @@ app.post("/app/api/purchase", function(req, res){
   res.json(order)
 })
 
-app.get("/app/api/catalogue", function(req, res){
+app.get("/mighty-fine/api/catalogue", function(req, res){
   res.json(catalogue)
 }) 
 
@@ -49,7 +49,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(public_path, 'index.html'));
 })
 
-app.get('/app', function (req, res) {
+app.get('/mighty-fine', function (req, res) {
   res.sendFile(path.join(public_path, 'index.html'));
 })
 
