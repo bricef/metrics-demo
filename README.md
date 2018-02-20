@@ -27,3 +27,27 @@ Monitoring containerised apps creates a whole new set of challenges that traditi
 ## Notes
 - Grafana dashboard used in this talk taken from https://github.com/vegasbrianc/grafana_dashboard
 - Joel York's SaaS metrics from http://chaotic-flow.com/media/saas-metrics-guide-to-saas-financial-performance.pdf
+
+## Interesting metrics
+Try the following while using the tools scripts to generate subscriptions and unsubscriptions.
+
+```
+# How fast are we gaining customers
+rate(subscribe_count[1m])
+
+# How fast are we losing customers.
+rate(unsubscribe_count[1m])
+
+# How many customer we have in total
+subscribe_count-unsubscribe_count
+
+# Our growth rate (instantaneous)
+irate(subscribe_count[1m])-irate(unsubscribe_count[1m])
+
+# Our growth rate (using deriv function)
+deriv(subscribe_count[1m])-deriv(unsubscribe_count[1m])
+
+# Our Churn (proportion of customers lost per unit time)
+rate(unsubscribe_count[1m]) / ((subscribe_count offset 1m) - (unsubscribe_count offset 1m))
+```
+

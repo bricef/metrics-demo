@@ -51,6 +51,27 @@ app.get("/mighty-fine/api/catalogue", function(req, res){
   res.json(catalogue)
 }) 
 
+
+/*
+ * Subscriptions
+ */
+
+const subscribe_count = new prometheus.Counter({name:'subscribe_count', help:'Total subscriptions'})
+const unsubscribe_count = new prometheus.Counter({name:'unsubscribe_count', help:'Total un-subscriptions'})
+
+app.post("/mighty-fine/api/subscribe", function(req,res){
+  var sub_request = req.body; // ignore the body
+  subscribe_count.inc(1)
+  res.json({"subscribed": true, data: sub_request})
+})
+app.post("/mighty-fine/api/unsubscribe", function(req,res){
+  var sub_request = req.body; // ignore the body
+  unsubscribe_count.inc(1)
+  res.json({"subscribed": false, data: sub_request})
+})
+
+
+
 // default is to render home page
 app.get('/', function (req, res) {
   res.sendFile(path.join(public_path, 'index.html'));
