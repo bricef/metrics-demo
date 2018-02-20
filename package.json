@@ -23,7 +23,6 @@
   "homepage": "https://github.com/bricef/metrics-demo#readme",
   "dependencies": {
     "body-parser": "^1.18.1",
-    "epimetheus": "^1.0.54",
     "express": "^4.15.4",
     "lodash": "^4.17.4"
   }
