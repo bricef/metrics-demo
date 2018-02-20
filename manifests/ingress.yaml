@@ -1,0 +1,18 @@
+kind: List
+apiVersion: v1
+items:
+  - apiVersion: extensions/v1beta1
+    kind: Ingress
+    metadata:
+      name: metrics-demo
+      namespace: ide-workspace
+      annotations:
+        kubernetes.io/ingress.class: traefik
+    spec:
+      rules:
+      - http:
+          paths:
+          - path: /app
+            backend:
+              serviceName: mighty-fine-fe
+              servicePort: http
