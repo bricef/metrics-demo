@@ -4,6 +4,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const _ = require('lodash')
 const epimetheus = require('epimetheus')
+const prometheus = require('prom-client')
 
 const catalogue = require("./catalogue.json")
 
@@ -25,6 +26,9 @@ function logErrors (err, req, res, next) {
 }
 app.use(logErrors)
 
+// Create custom counter for sales
+const sales_counter = new prometheus.Counter({name:'sales', help:'Total sales in GBP'})
+
 // Serve static files from public dir
 app.use('/mighty-fine/public', express.static(public_path))
 
@@ -34,6 +38,7 @@ app.post("/mighty-fine/api/purchase", function(req, res){
     order.total += (item.count * catalogue[item.id].price);
     console.log("Order made: ", order);
     return order;
+    sales_counter.inc(order.total)
   }, {
     status: "OK",
     count: 0,
