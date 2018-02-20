@@ -14,6 +14,15 @@ var public_path = path.join(__dirname, 'public');
 app.use(bodyParser.json())
 app.set('json spaces', 2);
 
+
+// Add error logging middleware
+function logErrors (err, req, res, next) {
+  console.error(err.stack)
+  next(err)
+}
+
+app.use(logErrors)
+
 // Serve static files from public dir
 app.use('/mighty-fine/public', express.static(public_path))
 
