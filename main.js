@@ -37,8 +37,8 @@ app.post("/mighty-fine/api/purchase", function(req, res){
     order.count += item.count;
     order.total += (item.count * catalogue[item.id].price);
     console.log("Order made: ", order);
+    sales_counter.inc(order.total);
     return order;
-    sales_counter.inc(order.total)
   }, {
     status: "OK",
     count: 0,
