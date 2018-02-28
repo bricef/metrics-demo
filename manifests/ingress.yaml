@@ -5,9 +5,8 @@ items:
     kind: Ingress
     metadata:
       name: metrics-demo
-      namespace: ide-workspace
       annotations:
-        kubernetes.io/ingress.class: traefik
+        kubernetes.io/ingress.class: traefik #default for minikube is nginx
     spec:
       rules:
       - http:
