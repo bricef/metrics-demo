@@ -2,7 +2,7 @@
 
 [![Docker Repository on Quay](https://quay.io/repository/brice/metrics-demo/status "Docker Repository on Quay")](https://quay.io/repository/brice/metrics-demo)
 
-This small demo was for my CloudNative 2017 talk.
+This small demo app was for my CloudNative 2017 talk.
 
 ## Abstract
 
@@ -13,6 +13,10 @@ Monitoring containerised apps creates a whole new set of challenges that traditi
 - Monitoring with Prometheus; 
 - Using PromQL (the Prometheus Query Language) to monitor your app in a dynamic system
 
-## Slides
+## CloudNative 2017 Slides
 
 [![Image of slideshow](resources/slidepic.png)](https://www.slideshare.net/fractallambda/monitoring-kubernetes-with-prometheus-80179046)
+
+## Notes
+- Grafana dashboard used in this talk taken from https://github.com/vegasbrianc/grafana_dashboard
+- Joel York's SaaS metrics from http://chaotic-flow.com/media/saas-metrics-guide-to-saas-financial-performance.pdf
