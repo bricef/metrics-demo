@@ -16,6 +16,10 @@ Monitoring containerised apps creates a whole new set of challenges that traditi
 - Monitoring with Prometheus
 - Using PromQL (the Prometheus Query Language) to monitor your app in a dynamic system
 
+## Software Circus February 2018 Slides
+
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/98VqJeLbmsltxa" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/fractallambda/handson-monitoring-with-prometheus" title="Hands-on monitoring with Prometheus" target="_blank">Hands-on monitoring with Prometheus</a> </strong> from <strong><a href="https://www.slideshare.net/fractallambda" target="_blank">Brice Fernandes</a></strong> </div>
+
 ## CloudNative 2017 Slides
 
 [![Image of slideshow](resources/slidepic.png)](https://www.slideshare.net/fractallambda/monitoring-kubernetes-with-prometheus-80179046)
