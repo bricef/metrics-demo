@@ -1,0 +1,1 @@
+{"jobID":"c1c2271b-0d82-d9aa-cf5e-95e5fe7c0fcf","spec":{"type":"policy","cause":{"Message":"Locking to known good version","User":"brice \u003cbrice@weave.works\u003e"},"spec":{"default:deployment/mighty-fine-fe":{"add":{"locked":"true","locked_msg":"\"Locking to known good version\"","locked_user":"brice \u003cbrice@weave.works\u003e"},"remove":null}}},"result":null}
