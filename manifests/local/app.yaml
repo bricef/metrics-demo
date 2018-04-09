@@ -1,0 +1,17 @@
+apiVersion: apps/v1beta1 # for versions before 1.6.0 use extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mighty-fine-fe
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mighty-fine-fe
+    spec:
+      containers:
+      - name: mighty-fine
+        image: quay.io/brice/metrics-demo:v1-simple-app
+        ports:
+        - containerPort: 3000
+
