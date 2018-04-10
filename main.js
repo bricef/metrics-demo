@@ -7,6 +7,7 @@ const epimetheus = require('epimetheus')
 const prometheus = require('prom-client')
 
 const catalogue = require("./catalogue.json")
+const package = require("./package.json")
 
 const app = express()
 
@@ -72,7 +73,15 @@ app.post("/mighty-fine/api/unsubscribe", function(req,res){
   res.json({"subscribed": false, data: sub_request})
 })
 
-
+// Info page to help with testing/ version checking
+app.get('/info', function (req, res) {
+  res.json({
+    serverTime: Date.now(),
+    homepage: package.homepage,
+    version: package.version,
+    description: package.description
+  });
+})
 
 // default is to render home page
 app.get('/', function (req, res) {
