@@ -24,7 +24,10 @@ Monitoring containerised apps creates a whole new set of challenges that traditi
 
 [![Image of slideshow](resources/slidepic.png)](https://www.slideshare.net/fractallambda/monitoring-kubernetes-with-prometheus-80179046)
 
-## Notes
+## Running this demo
+Take a look at the manifests directory if you want to run this demo yourself. There is also a [separate repository](https://github.com/bricef/metrics-demo-infra) used for infrastructure operations and automation which will have the latest version of this manifest.
+
+## Credits
 - Grafana dashboard used in this talk taken from https://github.com/vegasbrianc/grafana_dashboard
 - Joel York's SaaS metrics from http://chaotic-flow.com/media/saas-metrics-guide-to-saas-financial-performance.pdf
 
