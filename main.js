@@ -43,6 +43,7 @@ app.post("/mighty-fine/api/purchase", function(req, res){
     count: 0,
     total: 0,
   })
+  console.log(`Sale of ${order.total} made`)
   sales_counter.inc(order.total);
   res.json(order)
 })
@@ -62,11 +63,13 @@ const unsubscribe_count = new prometheus.Counter({name:'unsubscribe_count', help
 app.post("/mighty-fine/api/subscribe", function(req,res){
   var sub_request = req.body; // ignore the body
   subscribe_count.inc(1)
+  console.log(`Customer subscribed`)
   res.json({"subscribed": true, data: sub_request})
 })
 app.post("/mighty-fine/api/unsubscribe", function(req,res){
   var sub_request = req.body; // ignore the body
   unsubscribe_count.inc(1)
+  console.log(`Customer unsubscribed`)
   res.json({"subscribed": false, data: sub_request})
 })
 
