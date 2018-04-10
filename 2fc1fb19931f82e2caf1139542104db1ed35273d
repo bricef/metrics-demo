@@ -1,0 +1,1 @@
+{"jobID":"5e9a0b7d-3b71-9ea2-07a2-bfde0a87ae4d","spec":{"type":"policy","cause":{"Message":"no longer need to keep at v1","User":"brice \u003cbrice@weave.works\u003e"},"spec":{"default:deployment/mighty-fine-fe":{"add":null,"remove":{"locked":"true","locked_msg":"\"no longer need to keep at v1\"","locked_user":"brice \u003cbrice@weave.works\u003e"}}}},"result":null}
