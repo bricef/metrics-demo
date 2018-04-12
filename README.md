@@ -34,23 +34,45 @@ Take a look at the manifests directory if you want to run this demo yourself. Th
 ## Interesting metrics
 Try the following while using the tools scripts to generate subscriptions and unsubscriptions.
 
+### Application metrics
+
 ```
+# Request rate by status
+sum by (status) (rate(http_request_buckets_milliseconds_count{_weave_service="mighty-fine-fe"}[1m]))
+
+## Latency distribution of requests
+# 99th percentile
+histogram_quantile(0.99, sum by (le) (rate(http_request_buckets_milliseconds_bucket{_weave_service="mighty-fine-fe"}[1m])));
+
+# 50th percentile
+histogram_quantile(0.50, sum by (le) (rate(http_request_buckets_milliseconds_bucket{_weave_service="mighty-fine-fe"}[1m])));
+
+# average
+sum(rate(http_request_buckets_milliseconds_sum{_weave_service="mighty-fine-fe"}[1m])) / sum(rate(http_request_buckets_milliseconds_count{_weave_service="mighty-fine-fe"}[1m]))
+```
+
+### Business metrics
+
+```
+# Gross sales over all time
+sum(sales)
+
+# Current subscribed customers
+sum(subscribe_count)-sum(unsubscribe_count)
+
+# Churn Rate
+rate(unsubscribe_count[1m]) / ((subscribe_count offset 1m) - (unsubscribe_count offset 1m)) 
+
 # How fast are we gaining customers
 rate(subscribe_count[1m])
 
 # How fast are we losing customers.
 rate(unsubscribe_count[1m])
 
-# How many customer we have in total
-subscribe_count-unsubscribe_count
-
 # Our growth rate (instantaneous)
-irate(subscribe_count[1m])-irate(unsubscribe_count[1m])
+rate(subscribe_count[1m])-rate(unsubscribe_count[1m])
 
 # Our growth rate (using deriv function)
 deriv(subscribe_count[1m])-deriv(unsubscribe_count[1m])
-
-# Our Churn (proportion of customers lost per unit time)
-rate(unsubscribe_count[1m]) / ((subscribe_count offset 1m) - (unsubscribe_count offset 1m))
 ```
 
