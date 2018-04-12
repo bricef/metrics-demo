@@ -93,7 +93,7 @@ app.get('/mighty-fine', function (req, res) {
 })
 
 app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
+  console.log('whiskey shop listening on port 3000.')
 })
 
 module.exports = app;
