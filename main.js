@@ -34,6 +34,17 @@ const sales_counter = new prometheus.Counter({name:'sales', help:'Total sales in
 app.use('/mighty-fine/public', express.static(public_path))
 
 app.post("/mighty-fine/api/purchase", function(req, res){
+  console.log(req.body)
+  /*
+    [
+      {
+        count: <int>,
+        item: {
+          id: <str>
+        }
+      }
+    ]
+  */
   var order = _.reduce(req.body, (order,item,line)=>{
     order.count += item.count;
     order.total += (item.count * catalogue[item.id].price);
