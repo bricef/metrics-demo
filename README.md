@@ -1,6 +1,7 @@
 # Making sure your containers aren't on Fire: Monitoring microservices with Prometheus
 
 [![Docker Repository on Quay](https://quay.io/repository/brice/metrics-demo/status "Docker Repository on Quay")](https://quay.io/repository/brice/metrics-demo)
+[![CircleCI](https://circleci.com/gh/bricef/metrics-demo/tree/master.svg?style=shield)](https://circleci.com/gh/bricef/metrics-demo/tree/master)
 
 This small demo app was used for
 - My [CloudNative London talk 2017-09-27](https://skillsmatter.com/skillscasts/10507-making-sure-your-containers-aren-t-on-fire-monitoring-microservices-with-prometheus)
