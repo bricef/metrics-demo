@@ -5,7 +5,9 @@ import asyncio
 import functools
 import requests
 import random
+import signal
 import json
+import sys
 
 catalogue = json.load(open("./catalogue.json"))
 
@@ -53,6 +55,13 @@ if __name__ == "__main__":
     
     if args.random_purchase:
         repeat_call(loop, purchase, 1.0, args.endpoint)
+
+    def quit():
+        loop.stop()
+        sys.stderr.write("\nExiting client.\n")
+        sys.exit(0)
+
+    loop.add_signal_handler(signal.SIGINT, quit)
 
     loop.run_forever()
     loop.close()
