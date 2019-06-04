@@ -24,16 +24,14 @@ jobs:
       - image: circleci/buildpack-deps:stretch
     environment:
       IMAGE_NAME: quay.io/brice/metrics-demo
-      SHORT_GIT_HASH: $(echo $CIRCLE_SHA1 | cut -c -7)
     steps:
       - run:
           name: Build Docker image
-          command: docker build -t $IMAGE_NAME:$CIRCLE_BRANCH-$SHORT_GIT_HASH .
+          command: docker build -t $IMAGE_NAME:$CIRCLE_BRANCH-$(echo $CIRCLE_SHA1 | cut -c -7) .
 
   publish:
     environment:
       IMAGE_NAME: quay.io/brice/metrics-demo
-      SHORT_GIT_HASH: $(echo $CIRCLE_SHA1 | cut -c -7)
     docker:
       - image: circleci/buildpack-deps:stretch
     steps:
@@ -42,7 +40,7 @@ jobs:
           name: Publish Docker Image to Quay.io
           command: |
             echo "$QUAY_PASS" | docker login quay.io -u "$QUAY_USERNAME" --password-stdin
-            docker push $IMAGE_NAME:$CIRCLE_BRANCH-$SHORT_GIT_HASH
+            docker push $IMAGE_NAME:$CIRCLE_BRANCH-$(echo $CIRCLE_SHA1 | cut -c -7)
 
 workflows:
   version: 2
