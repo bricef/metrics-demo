@@ -20,6 +20,8 @@ jobs:
       - run: yarn test
 
   build:
+    docker:
+      - image: circleci/buildpack-deps:stretch
     environment:
       IMAGE_NAME: quay.io/brice/metrics-demo
       SHORT_GIT_HASH: $(echo $CIRCLE_SHA1 | cut -c -7)
