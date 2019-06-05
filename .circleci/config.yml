@@ -1,4 +1,10 @@
-version: 2
+ersion: 2.1
+  executors:
+    docker-publisher:
+      environment:
+        IMAGE_NAME: quay.io/brice/metrics-demo
+      docker:
+        - image: circleci/buildpack-deps:stretch
 jobs:
   test:
     docker:
@@ -20,24 +26,31 @@ jobs:
       - run: yarn test
 
   build:
-    docker:
-      - image: circleci/buildpack-deps:stretch
-    environment:
-      IMAGE_NAME: quay.io/brice/metrics-demo
+    executor: docker-publisher
     steps:
       - checkout
       - setup_remote_docker
       - run:
           name: Build Docker image
           command: docker build -t $IMAGE_NAME:$CIRCLE_BRANCH-$(echo $CIRCLE_SHA1 | cut -c -7) .
+      - run:
+          name: Archive Docker image
+          command: docker save -o image.tar $IMAGE_NAME:$CIRCLE_BRANCH-$(echo $CIRCLE_SHA1 | cut -c -7)
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./image.tar
 
   publish:
-    environment:
-      IMAGE_NAME: quay.io/brice/metrics-demo
-    docker:
-      - image: circleci/buildpack-deps:stretch
+    executor: docker-publisher
     steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - checkout
       - setup_remote_docker
+      - run:
+          name: Load archived Docker image
+          command: docker load -i /tmp/workspace/image.tar
       - run:
           name: Publish Docker Image to Quay.io
           command: |
