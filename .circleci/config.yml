@@ -64,8 +64,8 @@ jobs:
       - run:
           name: Scan for vulnerabilities using microscanner
           command: |
-          cd microscanner-wrapper
-          MICROSCANNER_TOKEN=$AQUA_TOKEN ./scan.sh $IMAGE_NAME:$CIRCLE_BRANCH-$(echo $CIRCLE_SHA1 | cut -c -7)
+            cd microscanner-wrapper
+            MICROSCANNER_TOKEN=$AQUA_TOKEN ./scan.sh $IMAGE_NAME:$CIRCLE_BRANCH-$(echo $CIRCLE_SHA1 | cut -c -7)
       
 
   publish:
