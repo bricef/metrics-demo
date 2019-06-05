@@ -1,10 +1,11 @@
-ersion: 2.1
-  executors:
-    docker-publisher:
-      environment:
-        IMAGE_NAME: quay.io/brice/metrics-demo
-      docker:
-        - image: circleci/buildpack-deps:stretch
+# see https://circleci.com/blog/using-circleci-workflows-to-replicate-docker-hub-automated-builds/
+version: 2.1
+executors:
+  docker-publisher:
+    environment:
+      IMAGE_NAME: quay.io/brice/metrics-demo
+    docker:
+      - image: circleci/buildpack-deps:stretch
 jobs:
   test:
     docker:
