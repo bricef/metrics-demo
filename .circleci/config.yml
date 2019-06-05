@@ -59,8 +59,8 @@ jobs:
           name: Load archived Docker image
           command: docker load -i /tmp/workspace/image.tar
       - run:
-        name: Get Scanning helper
-        command: git clone https://github.com/lukebond/microscanner-wrapper.git
+          name: Get Scanning helper
+          command: git clone https://github.com/lukebond/microscanner-wrapper.git
       - run:
           name: Scan for vulnerabilities using microscanner
           command: |
