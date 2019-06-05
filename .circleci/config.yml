@@ -1,11 +1,18 @@
 # see https://circleci.com/blog/using-circleci-workflows-to-replicate-docker-hub-automated-builds/
 version: 2.1
+
+orbs:
+  microscanner: aquasecurity/microscanner@dev:0.0.1
+
+
 executors:
   docker-publisher:
     environment:
       IMAGE_NAME: quay.io/brice/metrics-demo
     docker:
       - image: circleci/buildpack-deps:stretch
+
+
 jobs:
   test:
     docker:
@@ -42,6 +49,24 @@ jobs:
           root: .
           paths:
             - ./image.tar
+  scan:
+    executor: docker-publisher
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - setup_remote_docker
+      - run:
+          name: Load archived Docker image
+          command: docker load -i /tmp/workspace/image.tar
+      - run:
+        name: Get Scanning helper
+        command: git clone https://github.com/lukebond/microscanner-wrapper.git
+      - run:
+          name: Scan for vulnerabilities using microscanner
+          command: |
+          cd microscanner-wrapper
+          MICROSCANNER_TOKEN=$AQUA_TOKEN ./scan.sh $IMAGE_NAME:$CIRCLE_BRANCH-$(echo $CIRCLE_SHA1 | cut -c -7)
+      
 
   publish:
     executor: docker-publisher
@@ -66,8 +91,10 @@ workflows:
       - test
       - build:
           requires: [test]
-      - publish:
+      - scan:
           requires: [build]
+      - publish:
+          requires: [build, scan]
           filters:
             branches:
               only: master
